@@ -1,0 +1,29 @@
+{
+  "name": "ck-table",
+  "version": "1.0.0",
+  "description": "高性能React表格",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "高性能React表格组件",
+    "ck-table",
+    "component",
+    "ui"
+  ],
+  "maintainers": [
+    "carrycry@outlook.com"
+  ],
+  "author": "chalk",
+  "main": "index.js",
+  "license": "ISC",
+  "dependencies": {
+    "antd": "^4.18.4",
+    "react": "^17.0.2",
+    "react-table": "^7.7.0",
+    "react-virtual": "^2.2.4"
+  },
+  "devDependencies": {
+    "less": "^4.1.2"
+  }
+}
