@@ -23,7 +23,7 @@ $ yarn add ck-table
 
 ------
 
-- [ck-table](http://www.wuliwu.top/ck-table)
+- [ck-table](http://ck.wuliwu.top)
 
 ## Usage
 
