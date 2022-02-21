@@ -1,0 +1,397 @@
+// 表格基础样式变量
+@primary-color: #017eff;
+@base-font-size: 12px;
+@base-font-color: #333;
+@base-bg-color: #fff;
+@base-height: 48px;
+@base-gap: 12px;
+@backgroud-color: #f5f5f5;
+@backgroud-color-hover: rgba(0, 0, 0, 0.04);
+@box-shadow: rgba(0, 0, 0, 0.15);
+@border-color: #eee;
+@sort-color: #ccc;
+
+.ck-table {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  font-size: @base-font-size;
+  border: 1px solid @border-color;
+  background-color: @base-bg-color;
+  overflow: hidden;
+
+
+  .ck-thead {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: @backgroud-color;
+
+    .ck-tr {
+      font-weight: 500;
+      background-color: inherit;
+
+      .ck-th {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid @border-color;
+        background-color: inherit;
+        padding: 0 @base-gap;
+        gap: 8px;
+
+        &.gutter {
+          position: sticky;
+          right: 0;
+          padding: 0;
+          width: 4px;
+        }
+
+        .ck-cell {
+          flex: 1;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        .ck-column-expand {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          line-height: 1;
+        }
+
+        .ck-column-sorter {
+          position: relative;
+          width: 12px;
+          height: 12px;
+
+          .sort-asc {
+            position: absolute;
+            left: 1px;
+            top: 0;
+            border-style: solid;
+            border-color: transparent transparent @sort-color;
+            border-width: 0 5px 5px 5px;
+
+            &.sort-active {
+              border-bottom-color: var(--primary-color);
+            }
+          }
+
+          .sort-desc {
+            position: absolute;
+            left: 1px;
+            bottom: 0;
+            border-style: solid;
+            border-color: @sort-color transparent transparent;
+            border-width: 5px 5px 0 5px;
+
+            &.sort-active {
+              border-top-color: var(--primary-color);
+            }
+          }
+        }
+
+        .ck-column-filter {
+          position: relative;
+          border-radius: 2px;
+          padding: 4px 2px;
+          transition: .3s;
+          cursor: pointer;
+
+          .icon-filter {
+            font-size: 12px;
+            color: @sort-color;
+          }
+
+          &.filter-active .icon-filter {
+            color: var(--primary-color);
+          }
+
+          &:hover {
+            background-color: @backgroud-color-hover;
+          }
+        }
+
+        .ck-table-resize {
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1;
+          width: 10px;
+          cursor: col-resize;
+
+          .resize-bar {
+            width: 2px;
+            height: 28px;
+          }
+
+          &:hover,
+          &:active,
+          &:focus {
+            .resize-bar {
+              background-color: @primary-color;
+            }
+          }
+        }
+      }
+    }
+
+    &::-webkit-scrollbar {
+      opacity: 0;
+    }
+
+    &::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-track {
+      background-color: inherit;
+    }
+  }
+
+  .ck-body {
+    display: flex;
+    overflow: hidden;
+    flex: 1;
+
+    .ck-tbody {
+      overflow-x: auto;
+      overflow-y: scroll;
+      flex: 1;
+    }
+
+    .ck-tr {
+
+      .ck-td {
+        display: inline-flex;
+        align-items: center;
+        border-bottom: 1px solid @border-color;
+        background-color: @base-bg-color;
+        padding: 0 @base-gap;
+
+        .ck-cell {
+          flex: 1;
+          max-width: 100%;
+        }
+
+        &.ellipsis .ck-cell {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  .ck-tfoot {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: @base-bg-color;
+
+    .ck-tr {
+      background-color: inherit;
+
+      .ck-td {
+        display: inline-flex;
+        align-items: center;
+        background-color: inherit;
+        padding: 0 @base-gap;
+
+        .ck-cell {
+          flex: 1;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+
+    &::-webkit-scrollbar {
+      opacity: 0;
+    }
+
+    &::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-track {
+      background-color: inherit;
+    }
+  }
+
+  .ck-tr {
+    height: 48px;
+    min-height: 24px;
+  }
+
+  .fixed-left {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.08);
+  }
+
+  .fixed-right {
+    position: sticky;
+    right: 0;
+    z-index: 1;
+    box-shadow: -4px 0px 4px 0px rgba(0, 0, 0, 0.08);
+
+    &+div {
+      box-shadow: none;
+    }
+  }
+
+  &.large .ck-tr {
+    height: 64px;
+  }
+
+  &.small .ck-tr {
+    height: 48px;
+  }
+
+  &.mini .ck-tr {
+    height: 36px;
+  }
+}
+
+// 插入body内的额外Dom
+.ck-table-filter-dropdown {
+  display: flex;
+  flex-flow: column;
+  box-shadow: 0 2px 6px @box-shadow;
+  background-color: #fff;
+
+  .ck-table-filter-header {
+    border-bottom: 1px solid @border-color;
+    padding: 6px 8px;
+
+    input {
+      font-size: 12px;
+      height: 28px;
+      padding: 0 8px;
+    }
+  }
+
+  .ck-table-filter-body {
+    width: 100%;
+  }
+
+  .ck-table-filter-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    min-height: 60px;
+    color: #666;
+  }
+
+  .ck-table-filter-list {
+    max-height: 220px;
+    padding: 4px 0;
+    margin: 0;
+    overflow: auto;
+
+    .ck-table-filter-item {
+      display: flex;
+      align-items: center;
+      height: 32px;
+      min-width: 120px;
+      padding: 0 8px;
+      transition: .3s;
+
+      &[disabled] {
+        display: none;
+      }
+
+      &:hover {
+        background-color: @backgroud-color;
+      }
+
+      .ck-table-filter-item-content {
+        flex: auto;
+      }
+    }
+  }
+
+  .ck-table-filter-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 8px;
+    border-top: 1px solid @border-color;
+
+    button {
+      font-size: 12px;
+      padding: 0 8px;
+    }
+  }
+}
+
+.ck-table-setting-dropdown {
+  display: flex;
+  flex-flow: column;
+  box-shadow: 0 2px 6px @box-shadow;
+  background-color: #fff;
+  transform: translateY(-6px);
+
+
+  .ck-table-setting-body {
+    width: 100%;
+
+    .ck-table-setting-reset {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 36px;
+      border-bottom: 1px solid @border-color;
+      padding: 0 8px;
+    }
+
+    .ck-table-setting-list {
+      max-height: 320px;
+      padding: 4px 0;
+      margin: 0;
+      overflow: auto;
+
+      .ck-table-setting-item {
+        display: flex;
+        align-items: center;
+        height: 32px;
+        min-width: 160px;
+        padding: 0 8px;
+        transition: .3s;
+
+        &[disabled] {
+          display: none;
+        }
+
+        &:hover {
+          background-color: @backgroud-color;
+        }
+
+        .ck-table-setting-item-content {
+          flex: auto;
+        }
+      }
+    }
+  }
+}
+
+.icon-setting {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  height: 48px;
+  width: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}

@@ -1,4 +1,3 @@
-import './index.less';
-import CkTable from './table';
+import CkTable from './lib';
 
 export default CkTable;
